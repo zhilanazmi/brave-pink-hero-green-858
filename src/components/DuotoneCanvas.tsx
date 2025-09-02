@@ -67,11 +67,11 @@ export const DuotoneCanvas = ({
         </p>
       </div>
 
-      <div className="relative bg-muted rounded-lg overflow-hidden">
+      <div className="relative bg-muted rounded-lg overflow-hidden border hover:border-primary/30 transition-all duration-300">
         {isProcessing && (
-          <div className="absolute inset-0 flex items-center justify-center bg-background/80 backdrop-blur-sm z-10">
+          <div className="absolute inset-0 flex items-center justify-center bg-background/90 backdrop-blur-sm z-10">
             <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-3 text-muted-foreground px-4 text-center">
-              <Loader2 className="w-6 h-6 animate-spin flex-shrink-0" />
+              <Loader2 className="w-6 h-6 animate-spin flex-shrink-0 text-primary" />
               <span className="font-medium text-sm sm:text-base">Applying duotone effect...</span>
             </div>
           </div>

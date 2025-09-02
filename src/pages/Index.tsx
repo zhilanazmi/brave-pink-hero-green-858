@@ -5,7 +5,9 @@ import { DropzoneUploader } from "@/components/DropzoneUploader";
 import { DuotoneCanvas } from "@/components/DuotoneCanvas";
 import { ActionsBar } from "@/components/ActionsBar";
 import { ReverseToggle } from "@/components/ReverseToggle";
+import { DarkModeToggle } from "@/components/DarkModeToggle";
 import { Card } from "@/components/ui/card";
+import { Sparkles } from "lucide-react";
 
 interface ProcessedImage {
   url: string;
@@ -87,17 +89,33 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-surface pb-safe">
-      <div className="container mx-auto px-4 py-4 sm:py-8 max-w-4xl">
-        {/* Header */}
-        <header className="text-center mb-6 sm:mb-12">
-          <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold bg-gradient-duotone bg-clip-text text-transparent mb-2 sm:mb-4">
-            Brave Pink Hero Green 1312
-          </h1>
-          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-2">
+    <div className="min-h-screen bg-gradient-surface pb-safe relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 pointer-events-none" />
+      <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse-slow pointer-events-none" />
+      <div className="absolute bottom-20 right-10 w-72 h-72 bg-secondary/10 rounded-full blur-3xl animate-pulse-slow pointer-events-none" style={{ animationDelay: '1s' }} />
+      
+      <div className="container mx-auto px-4 py-4 sm:py-8 max-w-4xl relative">
+        {/* Header with theme toggle */}
+        <header className="text-center mb-6 sm:mb-12 relative">
+          <div className="absolute top-0 right-0 sm:top-4 sm:right-4">
+            <DarkModeToggle />
+          </div>
+          
+          <div className="animate-float">
+            <div className="flex items-center justify-center mb-4">
+              <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 text-primary mr-2 animate-pulse" />
+              <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold bg-gradient-duotone bg-clip-text text-transparent animate-gradient">
+                Brave Pink Hero Green 1312
+              </h1>
+              <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 text-secondary ml-2 animate-pulse" style={{ animationDelay: '0.5s' }} />
+            </div>
+          </div>
+          
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-2 mb-2">
             Pink × Green duotone. Local & private.
           </p>
-          <p className="text-sm text-muted-foreground mt-2 px-2">
+          <p className="text-sm text-muted-foreground px-2">
             Transform your photos with beautiful duotone effects. All processing happens in your browser.
           </p>
         </header>
@@ -105,18 +123,18 @@ const Index = () => {
         {/* Main content */}
         <main className="space-y-4 sm:space-y-8 pb-20 sm:pb-8">
           {!originalFile && !processedImage && (
-            <Card className="p-4 sm:p-8 shadow-card mx-2 sm:mx-0">
+            <Card className="p-4 sm:p-8 shadow-card mx-2 sm:mx-0 border-2 hover:border-primary/30 transition-all duration-300 hover:shadow-drop animate-glow">
               <DropzoneUploader onFileSelect={handleFileSelect} />
             </Card>
           )}
 
           {error && (
-            <Card className="p-4 sm:p-6 border-destructive bg-destructive/5 mx-2 sm:mx-0">
+            <Card className="p-4 sm:p-6 border-destructive bg-destructive/5 mx-2 sm:mx-0 animate-glow">
               <div className="text-center">
                 <p className="text-destructive font-medium mb-4">{error}</p>
                 <button
                   onClick={handleReset}
-                  className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors min-h-[44px]"
+                  className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-all duration-300 hover:scale-105 min-h-[44px]"
                 >
                   Try Again
                 </button>
@@ -126,7 +144,7 @@ const Index = () => {
 
           {originalFile && (
             <>
-              <Card className="p-4 sm:p-6 shadow-card mx-2 sm:mx-0">
+              <Card className="p-4 sm:p-6 shadow-card mx-2 sm:mx-0 border hover:border-primary/30 transition-all duration-300 hover:shadow-drop">
                 <DuotoneCanvas
                   file={originalFile}
                   onProcessingComplete={handleProcessingComplete}
@@ -137,7 +155,7 @@ const Index = () => {
               </Card>
               
               {/* Controls - Mobile optimized */}
-              <Card className="p-4 sm:p-6 shadow-card mx-2 sm:mx-0">
+              <Card className="p-4 sm:p-6 shadow-card mx-2 sm:mx-0 border hover:border-primary/30 transition-all duration-300">
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                   <div className="w-full sm:w-auto">
                     <ReverseToggle

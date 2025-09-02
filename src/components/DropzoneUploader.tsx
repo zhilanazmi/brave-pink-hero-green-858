@@ -68,28 +68,28 @@ export const DropzoneUploader = ({ onFileSelect }: DropzoneUploaderProps) => {
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
       >
-        <div className="flex flex-col items-center space-y-4">
-          <div className="p-4 rounded-full bg-gradient-duotone">
-            <Image className="w-8 h-8 text-white" />
-          </div>
-          
-          <div className="text-center">
-            <h3 className="text-xl font-semibold mb-2">
-              Drop your image here
-            </h3>
-            <p className="text-muted-foreground mb-4">
-              or click to browse your files
-            </p>
-          </div>
+          <div className="flex flex-col items-center space-y-4">
+            <div className="p-4 rounded-full bg-gradient-duotone animate-float shadow-drop">
+              <Image className="w-8 h-8 text-white" />
+            </div>
+            
+            <div className="text-center">
+              <h3 className="text-xl font-semibold mb-2">
+                Drop your image here
+              </h3>
+              <p className="text-muted-foreground mb-4">
+                or click to browse your files
+              </p>
+            </div>
 
-          <Button 
-            size="lg"
-            className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg"
-            onClick={() => document.getElementById('file-input')?.click()}
-          >
-            <Upload className="w-4 h-4 mr-2" />
-            Choose Image
-          </Button>
+            <Button 
+              size="lg"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-drop transition-all duration-300 hover:scale-105 animate-glow"
+              onClick={() => document.getElementById('file-input')?.click()}
+            >
+              <Upload className="w-4 h-4 mr-2" />
+              Choose Image
+            </Button>
 
           <input
             id="file-input"
