@@ -106,7 +106,7 @@ const Index = () => {
             <div className="flex items-center justify-center mb-4">
               <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 text-primary mr-2 animate-pulse" />
               <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold bg-gradient-duotone bg-clip-text text-transparent animate-gradient">
-                Brave Pink Hero Green 1312
+                Brave Pink Hero Green
               </h1>
               <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 text-secondary ml-2 animate-pulse" style={{ animationDelay: '0.5s' }} />
             </div>
@@ -173,16 +173,16 @@ const Index = () => {
         {/* Footer */}
         <footer className="text-center mt-8 sm:mt-16 pt-8 border-t border-border px-2">
           <p className="text-sm text-muted-foreground">
-            All processing happens locally in your browser. Your photos never leave your device.
+          All processes are in the browser. No data is stored on your device.
           </p>
           <p className="text-xs text-muted-foreground/70 mt-2">
             developed by <a 
-              href="https://instagram.com/marjono__" 
+              href="https://instagram.com/zhilanazmi" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-primary hover:text-primary/80 transition-colors underline"
             >
-              marjono
+              Zhillan Azmi
             </a>
           </p>
         </footer>
